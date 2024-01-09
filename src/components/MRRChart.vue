@@ -24,8 +24,8 @@ export default {
       axios
         .get("http://localhost:3000/metrics/mrr?year=2022")
         .then((response) => {
-          this.activeSubscriptions = response?.data.map(
-            (item) => item?.activeSubscriptions
+          this.activeSubscriptions = response.data.map(
+            (item) => item.activeSubscriptions
           );
           this.createChart(response.data);
         })
@@ -33,9 +33,15 @@ export default {
           console.error("Error fetching data:", error);
         });
     },
+
     createChart(chartData) {
       const months = chartData?.map((item) => this.translateMonth(item.month));
-      const mrrValues = chartData?.map((item) => item.totalMRR);
+      const mrrValues = chartData?.map((item) =>
+        parseFloat(item.totalMRR.toFixed(2))
+      );
+      // const mrrSubscription = chartData?.map(
+      //   (item) => item.activeSubscriptions
+      // );
 
       const ctx = document.getElementById("myChart");
       const config = {
@@ -58,12 +64,17 @@ export default {
               beginAtZero: true,
             },
           },
-          tooltips: {
-            callbacks: {
-              label: (tooltipItem) => {
-                return `MRR: ${tooltipItem?.yLabel.toLocaleString()} - Assinaturas: ${
-                  this.activeSubscriptions[tooltipItem?.index]
-                }`;
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: (context) => {
+                  const mrr = parseFloat(
+                    context.parsed.y.toFixed(2)
+                  ).toLocaleString();
+                  const subscriptions =
+                    this.activeSubscriptions[context.dataIndex];
+                  return `R$${mrr}\n Assinaturas: ${subscriptions ?? "N/A"}`;
+                },
               },
             },
           },
