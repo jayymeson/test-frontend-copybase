@@ -1,17 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
+    <MRRChart />
+    <!-- <churn-rate-chart :month="selectedMonth" /> -->
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MRRChart from "./components/MRRChart.vue";
+// import ChurnRateChart from "./components/ChurnRateChart.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    MRRChart,
+    // ChurnRateChart,
+  },
+  // data() {
+  //   return {
+  //     selectedMonth: "2022-11",
+  //   };
+  // },
+};
 </script>
 
 <style>
