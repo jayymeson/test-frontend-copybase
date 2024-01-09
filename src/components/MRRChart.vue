@@ -39,9 +39,6 @@ export default {
       const mrrValues = chartData?.map((item) =>
         parseFloat(item.totalMRR.toFixed(2))
       );
-      // const mrrSubscription = chartData?.map(
-      //   (item) => item.activeSubscriptions
-      // );
 
       const ctx = document.getElementById("myChart");
       const config = {
@@ -65,6 +62,9 @@ export default {
             },
           },
           plugins: {
+            legend: {
+              position: "bottom", // Posiciona a legenda na parte inferior
+            },
             tooltip: {
               callbacks: {
                 label: (context) => {
