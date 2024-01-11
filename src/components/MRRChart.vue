@@ -1,6 +1,17 @@
 <template>
-  <div style="position: relative; height: 20vh; width: 40vw">
-    <canvas id="myChart"></canvas>
+  <div class="container">
+    <div class="header">
+      <div class="tooltip">
+        ?
+        <span class="tooltiptext"
+          >Informações sobre a Receita Mensal Recorrente (MRR).</span
+        >
+      </div>
+      <h3>Receita Mensal Recorrente (MRR)</h3>
+    </div>
+    <div class="chart-container">
+      <canvas id="myChart"></canvas>
+    </div>
   </div>
 </template>
 
@@ -108,5 +119,58 @@ export default {
 </script>
 
 <style scoped>
-/* Seus estilos */
+.container {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 20px;
+  width: 600px;
+  margin: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.tooltip {
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  width: 30px; /* Aumente o tamanho */
+  height: 30px; /* Aumente o tamanho */
+  line-height: 30px; /* Ajuste para centralizar verticalmente */
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 16px; /* Aumente o tamanho do texto */
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 160px; /* Ajuste a largura conforme necessário */
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%; /* Ajuste a posição conforme necessário */
+  left: 50%;
+  margin-left: -80px; /* Ajuste conforme a largura */
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.chart-container {
+  width: 600px;
+  margin-top: 20px;
+}
 </style>
