@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <AppHeader />
+    <AppHeader @upload-success="updateCharts" />
     <div class="flex-container">
-      <MRRChart />
-      <ChurnRateChart />
-      <RevenuePerCustomerChart />
-      <ARPUChart />
+      <MRRChart ref="mrrChart" />
+      <ChurnRateChart ref="churnRateChart" />
+      <RevenuePerCustomerChart ref="revenuePerCustomerChart" />
+      <ARPUChart ref="arpuChart" />
     </div>
     <AppFooter />
     <!-- Mais conteúdo aqui, se necessário -->
@@ -29,6 +29,16 @@ export default {
     ARPUChart,
     AppHeader,
     AppFooter,
+  },
+
+  methods: {
+    updateCharts() {
+      if (this.$refs.mrrChart) this.$refs.mrrChart.fetchData();
+      if (this.$refs.churnRateChart) this.$refs.churnRateChart.fetchChurnData();
+      if (this.$refs.arpuChart) this.$refs.arpuChart.fetchData();
+      if (this.$refs.revenuePerCustomerChart)
+        this.$refs.revenuePerCustomerChart.fetchData();
+    },
   },
 };
 </script>

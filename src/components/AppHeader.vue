@@ -2,12 +2,12 @@
   <header class="header">
     <AppLogo class="logo" />
     <nav class="navigation"></nav>
-    <button class="action-button" @click="showUploadModal">
+    <button v-if="isLoggedIn" class="action-button" @click="showUploadModal">
       Upload Planilha
     </button>
-    <button class="action-button" @click="showLoginModal">Login</button>
-    <LoginModal ref="loginModal" />
-    <UploadModal ref="uploadModal" />
+    <button v-else class="action-button" @click="showLoginModal">Login</button>
+    <LoginModal ref="loginModal" @login-success="handleLoginSuccess" />
+    <UploadModal ref="uploadModal" @upload-success="$emit('upload-success')" />
   </header>
 </template>
 
@@ -23,12 +23,26 @@ export default {
     LoginModal,
     UploadModal,
   },
+  data() {
+    return {
+      isLoggedIn: !!localStorage.getItem("token"),
+    };
+  },
   methods: {
     showLoginModal() {
       this.$refs.loginModal.isVisible = true;
     },
     showUploadModal() {
       this.$refs.uploadModal.isVisible = true;
+    },
+    handleLoginSuccess() {
+      this.isLoggedIn = true;
+    },
+    updateCharts() {
+      this.$refs.mrrChart.fetchData();
+      this.$refs.churnRateChart.fetchChurnData();
+      this.$refs.arpuChart.fetchData();
+      this.$refs.revenuePerCustomerChart.fetchData();
     },
   },
 };

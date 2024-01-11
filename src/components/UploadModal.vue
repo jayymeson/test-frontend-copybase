@@ -78,8 +78,14 @@ export default {
       const formData = new FormData();
       formData.append("file", this.selectedFile);
 
+      const token = localStorage.getItem("token");
+
       axios
-        .post("http://localhost:3000/subscription/upload", formData)
+        .post("http://localhost:3000/subscription/upload", formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
         .then((response) => {
           if (response.status === 201) {
             this.uploadResponse = {
@@ -87,6 +93,7 @@ export default {
               insertedRecords: response.data.insertedRecords,
               ignoredRecords: response.data.ignoredRecords,
             };
+            this.$emit("upload-success");
           } else {
             this.fileError =
               "Ocorreu um erro durante o upload. Por favor, tente novamente.";
@@ -184,7 +191,7 @@ input[type="file"]:active::before {
   cursor: pointer;
   font-weight: 700;
   margin: 10px auto;
-  width: fit-content; 
+  width: fit-content;
 }
 
 .input-file {
