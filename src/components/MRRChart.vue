@@ -4,7 +4,8 @@
       <div class="tooltip">
         ?
         <span class="tooltiptext"
-          >Informações sobre a Receita Mensal Recorrente (MRR).</span
+          >MRR é a receita que uma empresa pode esperar receber de forma
+          recorrente a cada mês.</span
         >
       </div>
       <h3>Receita Mensal Recorrente (MRR)</h3>
@@ -135,6 +136,7 @@ export default {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
+  margin-bottom: 30px;
 }
 
 .tooltip {
@@ -142,17 +144,20 @@ export default {
   background-color: #fff;
   border-radius: 50%;
   text-align: center;
-  width: 30px; /* Aumente o tamanho */
-  height: 30px; /* Aumente o tamanho */
-  line-height: 30px; /* Ajuste para centralizar verticalmente */
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
   margin-right: 10px;
   cursor: pointer;
-  font-size: 16px; /* Aumente o tamanho do texto */
+  font-size: 16px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 160px; /* Ajuste a largura conforme necessário */
+  width: 160px;
   background-color: black;
   color: #fff;
   text-align: center;
@@ -160,9 +165,9 @@ export default {
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  bottom: 150%; /* Ajuste a posição conforme necessário */
+  bottom: 150%;
   left: 50%;
-  margin-left: -80px; /* Ajuste conforme a largura */
+  margin-left: -80px;
 }
 
 .tooltip:hover .tooltiptext {

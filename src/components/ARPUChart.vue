@@ -4,8 +4,9 @@
       <div class="tooltip">
         ?
         <span class="tooltiptext"
-          >Informações sobre a Receita Média por Usuário (ARPU).</span
-        >
+          >ARPU é a média de receita gerada por usuário ou cliente em um
+          determinado período.
+        </span>
       </div>
       <h3>Receita Média por Usuário (ARPU)</h3>
     </div>
@@ -147,6 +148,7 @@ export default {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
+  margin-bottom: 30px;
 }
 
 .tooltip {
@@ -160,6 +162,9 @@ export default {
   margin-right: 10px;
   cursor: pointer;
   font-size: 16px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .tooltip .tooltiptext {

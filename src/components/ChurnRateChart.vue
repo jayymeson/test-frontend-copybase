@@ -4,7 +4,8 @@
       <div class="tooltip">
         ?
         <span class="tooltiptext"
-          >Informações sobre a Taxa de Cancelamento (Churn Rate).</span
+          >A taxa de churn é a porcentagem de clientes que cancelam ou não
+          renovam sua assinatura durante um determinado período.</span
         >
       </div>
       <h3>Taxa de Cancelamento (Churn Rate)</h3>
@@ -130,6 +131,7 @@ export default {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
+  margin-bottom: 30px;
 }
 
 .tooltip {
@@ -137,12 +139,15 @@ export default {
   background-color: #fff;
   border-radius: 50%;
   text-align: center;
-  width: 30px; 
+  width: 30px;
   height: 30px;
   line-height: 30px;
   margin-right: 10px;
   cursor: pointer;
-  font-size: 16px; 
+  font-size: 16px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .tooltip .tooltiptext {
@@ -157,7 +162,7 @@ export default {
   z-index: 1;
   bottom: 150%;
   left: 50%;
-  margin-left: -80px; 
+  margin-left: -80px;
 }
 
 .tooltip:hover .tooltiptext {
