@@ -55,7 +55,7 @@ Após executar os comandos, o projeto estará disponível em `http://localhost:8
 
 ## 🛠️ Autenticando no sistema
 
-Para se autenticar no sistema e testar upload da planilha no insomnia, precisa fazer login:
+Para fazer upload da planilha, se faz necessário se logar na aplicação.
 
 Corpo da requisição:
 
